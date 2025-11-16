@@ -1,26 +1,265 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+@theme {
+  /* Palette principale - Tons terreux et chaleureux d'Afrique */
+  
+  /* Orange terre cuite (couleur principale) */
+  --color-primary-50: oklch(0.97 0.02 50);
+  --color-primary-100: oklch(0.94 0.04 50);
+  --color-primary-200: oklch(0.88 0.08 50);
+  --color-primary-300: oklch(0.80 0.12 50);
+  --color-primary-400: oklch(0.70 0.16 50);
+  --color-primary-500: oklch(0.62 0.18 45); /* #D97642 - Terre africaine */
+  --color-primary-600: oklch(0.54 0.16 45);
+  --color-primary-700: oklch(0.45 0.14 45);
+  --color-primary-800: oklch(0.36 0.11 45);
+  --color-primary-900: oklch(0.28 0.08 45);
+  
+  /* Brun chocolat (couleur secondaire) */
+  --color-secondary-50: oklch(0.96 0.01 60);
+  --color-secondary-100: oklch(0.92 0.02 60);
+  --color-secondary-200: oklch(0.84 0.04 60);
+  --color-secondary-300: oklch(0.72 0.06 60);
+  --color-secondary-400: oklch(0.58 0.08 60);
+  --color-secondary-500: oklch(0.45 0.08 60); /* #6B4423 - Chocolat africain */
+  --color-secondary-600: oklch(0.38 0.07 60);
+  --color-secondary-700: oklch(0.32 0.06 60);
+  --color-secondary-800: oklch(0.26 0.05 60);
+  --color-secondary-900: oklch(0.20 0.04 60);
+  
+  /* Or doré (accent) */
+  --color-accent-50: oklch(0.98 0.02 85);
+  --color-accent-100: oklch(0.95 0.05 85);
+  --color-accent-200: oklch(0.90 0.10 85);
+  --color-accent-300: oklch(0.85 0.14 85);
+  --color-accent-400: oklch(0.78 0.16 85);
+  --color-accent-500: oklch(0.75 0.14 90); /* #C9A961 - Or africain */
+  --color-accent-600: oklch(0.65 0.12 90);
+  --color-accent-700: oklch(0.55 0.10 90);
+  --color-accent-800: oklch(0.45 0.08 90);
+  --color-accent-900: oklch(0.35 0.06 90);
+  
+  /* Gris neutres */
+  --color-neutral-50: oklch(0.98 0 0);
+  --color-neutral-100: oklch(0.96 0 0);
+  --color-neutral-200: oklch(0.92 0 0);
+  --color-neutral-300: oklch(0.86 0 0);
+  --color-neutral-400: oklch(0.71 0 0);
+  --color-neutral-500: oklch(0.55 0 0);
+  --color-neutral-600: oklch(0.45 0 0);
+  --color-neutral-700: oklch(0.38 0 0);
+  --color-neutral-800: oklch(0.27 0 0);
+  --color-neutral-900: oklch(0.19 0 0);
+  
+  /* Couleurs fonctionnelles */
+  --color-success: oklch(0.65 0.18 142);
+  --color-error: oklch(0.58 0.23 25);
+  
+  /* Typographie */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-playfair), Georgia, serif;
+  
+  /* Espacements */
+  --spacing-section: 5rem;
+  --spacing-container: 2rem;
+  
+  /* Border radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  
+  /* Ombres */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ================================ */
+/* STYLES DE BASE                   */
+/* ================================ */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-neutral-900);
+    background-color: var(--color-neutral-50);
+  }
+  
+  /* Titres */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-secondary-900);
+    margin: 0;
+  }
+  
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+  }
+  
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+  
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+  
+  h4 {
+    font-size: 1.25rem;
+  }
+  
+  p {
+    margin: 0;
+    line-height: 1.7;
+  }
+  
+  a {
+    color: var(--color-primary-600);
+    text-decoration: none;
+    transition: color 150ms;
+  }
+  
+  a:hover {
+    color: var(--color-primary-700);
+  }
+  
+  /* Focus pour accessibilité */
+  *:focus-visible {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ================================ */
+/* UTILITAIRES PERSONNALISÉS        */
+/* ================================ */
+
+@layer utilities {
+  /* Container */
+  .container-custom {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-container);
+    padding-right: var(--spacing-container);
+  }
+  
+  @media (max-width: 768px) {
+    .container-custom {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+  
+  /* Espacement des sections */
+  .section-spacing {
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+  }
+  
+  @media (max-width: 768px) {
+    .section-spacing {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+  }
+  
+  /* Gradient texte */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-primary-500), var(--color-accent-500));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Effet verre */
+  .glass {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* ================================ */
+/* ANIMATIONS                       */
+/* ================================ */
+
+@layer utilities {
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 300ms ease-in;
+  }
+  
+  @keyframes slide-up {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 400ms ease-out;
+  }
+}
+
+/* ================================ */
+/* PRINT                            */
+/* ================================ */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
 }
